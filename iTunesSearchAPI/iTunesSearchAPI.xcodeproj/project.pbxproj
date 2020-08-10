@@ -13,6 +13,12 @@
 		677C502D24E1D7530033B50F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677C502C24E1D7530033B50F /* Assets.xcassets */; };
 		677C503024E1D7530033B50F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 677C502E24E1D7530033B50F /* LaunchScreen.storyboard */; };
 		677C503B24E1D7540033B50F /* iTunesSearchAPITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C503A24E1D7540033B50F /* iTunesSearchAPITests.swift */; };
+		677C504F24E1E6910033B50F /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C504E24E1E6910033B50F /* SearchResponse.swift */; };
+		677C505224E1E6FD0033B50F /* NetworkUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C505124E1E6FD0033B50F /* NetworkUtil.swift */; };
+		677C505424E1E74F0033B50F /* BaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C505324E1E74F0033B50F /* BaseManager.swift */; };
+		677C505624E1E77C0033B50F /* CLBError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C505524E1E77C0033B50F /* CLBError.swift */; };
+		677C505924E1E97C0033B50F /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C505824E1E97C0033B50F /* SearchManager.swift */; };
+		677C505B24E1EA0A0033B50F /* SearchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C505A24E1EA0A0033B50F /* SearchService.swift */; };
 		BE403CE9C5790257C225D52F /* Pods_iTunesSearchAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23151406B7F119C0B48BA7DF /* Pods_iTunesSearchAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -38,6 +44,12 @@
 		677C503624E1D7540033B50F /* iTunesSearchAPITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iTunesSearchAPITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C503A24E1D7540033B50F /* iTunesSearchAPITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = iTunesSearchAPITests.swift; sourceTree = "<group>"; };
 		677C503C24E1D7540033B50F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		677C504E24E1E6910033B50F /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
+		677C505124E1E6FD0033B50F /* NetworkUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkUtil.swift; sourceTree = "<group>"; };
+		677C505324E1E74F0033B50F /* BaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseManager.swift; sourceTree = "<group>"; };
+		677C505524E1E77C0033B50F /* CLBError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CLBError.swift; sourceTree = "<group>"; };
+		677C505824E1E97C0033B50F /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		677C505A24E1EA0A0033B50F /* SearchService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchService.swift; sourceTree = "<group>"; };
 		89852B29592788D9CC690FCF /* Pods-iTunesSearchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchAPI.debug.xcconfig"; path = "Target Support Files/Pods-iTunesSearchAPI/Pods-iTunesSearchAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		903C47C9FC3A32E51AFEAE98 /* Pods-iTunesSearchAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchAPITests.debug.xcconfig"; path = "Target Support Files/Pods-iTunesSearchAPITests/Pods-iTunesSearchAPITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9E0F94E5CF11233A5163BE9 /* Pods-iTunesSearchAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchAPITests.release.xcconfig"; path = "Target Support Files/Pods-iTunesSearchAPITests/Pods-iTunesSearchAPITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -107,9 +119,13 @@
 		677C502224E1D7500033B50F /* iTunesSearchAPI */ = {
 			isa = PBXGroup;
 			children = (
+				677C504924E1E5CE0033B50F /* ViewControllers */,
+				677C504824E1E5C70033B50F /* ViewModels */,
+				677C504724E1E5BF0033B50F /* Models */,
+				677C505024E1E6E30033B50F /* NetworkLayer */,
+				677C504B24E1E5EC0033B50F /* Extensions */,
+				677C504A24E1E5E30033B50F /* Manager */,
 				677C504624E1DBEF0033B50F /* SupportingFiles */,
-				677C502324E1D7500033B50F /* AppDelegate.swift */,
-				677C502524E1D7500033B50F /* SceneDelegate.swift */,
 			);
 			path = iTunesSearchAPI;
 			sourceTree = "<group>";
@@ -126,11 +142,69 @@
 		677C504624E1DBEF0033B50F /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				677C502324E1D7500033B50F /* AppDelegate.swift */,
+				677C502524E1D7500033B50F /* SceneDelegate.swift */,
 				677C502C24E1D7530033B50F /* Assets.xcassets */,
 				677C502E24E1D7530033B50F /* LaunchScreen.storyboard */,
 				677C503124E1D7530033B50F /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		677C504724E1E5BF0033B50F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				677C504E24E1E6910033B50F /* SearchResponse.swift */,
+				677C505524E1E77C0033B50F /* CLBError.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		677C504824E1E5C70033B50F /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		677C504924E1E5CE0033B50F /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		677C504A24E1E5E30033B50F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		677C504B24E1E5EC0033B50F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		677C505024E1E6E30033B50F /* NetworkLayer */ = {
+			isa = PBXGroup;
+			children = (
+				677C505724E1E95B0033B50F /* Search */,
+				677C505124E1E6FD0033B50F /* NetworkUtil.swift */,
+				677C505324E1E74F0033B50F /* BaseManager.swift */,
+			);
+			path = NetworkLayer;
+			sourceTree = "<group>";
+		};
+		677C505724E1E95B0033B50F /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				677C505824E1E97C0033B50F /* SearchManager.swift */,
+				677C505A24E1EA0A0033B50F /* SearchService.swift */,
+			);
+			path = Search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,8 +374,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				677C505B24E1EA0A0033B50F /* SearchService.swift in Sources */,
+				677C505424E1E74F0033B50F /* BaseManager.swift in Sources */,
+				677C505224E1E6FD0033B50F /* NetworkUtil.swift in Sources */,
+				677C504F24E1E6910033B50F /* SearchResponse.swift in Sources */,
 				677C502424E1D7500033B50F /* AppDelegate.swift in Sources */,
 				677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */,
+				677C505624E1E77C0033B50F /* CLBError.swift in Sources */,
+				677C505924E1E97C0033B50F /* SearchManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
