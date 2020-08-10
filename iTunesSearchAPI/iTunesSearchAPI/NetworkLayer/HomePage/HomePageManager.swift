@@ -1,5 +1,5 @@
 //
-//  SearchManager.swift
+//  HomePageManager.swift
 //  iTunesSearchAPI
 //
 //  Created by Yunus Emre Celebi on 10.08.2020.
@@ -8,14 +8,14 @@
 
 import Moya
 
-protocol SearchServiceProtocol {
+protocol HomePageServiceProtocol {
 
     func fetchSearchList(term: String, limit: Int, completion: @escaping (SearchResponse?, CLBError?) -> Void)
 }
 
-class SearchManager: BaseManager<SearchService>, SearchServiceProtocol {
+class HomePageManager: BaseManager<HomePageService>, HomePageServiceProtocol {
 
-    override init(provider: MoyaProvider<SearchService>) {
+    override init(provider: MoyaProvider<HomePageService>) {
         super.init(provider: provider)
     }
 

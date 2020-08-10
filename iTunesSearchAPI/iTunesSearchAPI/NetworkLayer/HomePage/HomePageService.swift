@@ -1,5 +1,5 @@
 //
-//  SearchService.swift
+//  HomePageService.swift
 //  iTunesSearchAPI
 //
 //  Created by Yunus Emre Celebi on 10.08.2020.
@@ -8,12 +8,12 @@
 
 import Moya
 
-enum SearchService {
+enum HomePageService {
 
     case search(term: String, limit: Int)
 }
 
-extension SearchService: TargetType {
+extension HomePageService: TargetType {
     
     var baseURL: URL {
         guard let url = URL(string: NetworkUtil.environmentBaseURL) else { fatalError("Base Url is required") }
