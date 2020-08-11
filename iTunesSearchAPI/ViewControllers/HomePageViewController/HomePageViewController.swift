@@ -96,7 +96,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
         let cell = collectionView.generateReusableCell(SearchItemCell.self, indexPath: indexPath)
 
         let item = self.viewModel.getItem(indexPath: indexPath)
-        cell.labelTitle.text = item.artistNames
+        cell.labelTitle.text = item.artistName
 
         ImageLoader.image(for: URL(string: item.artworkUrl100)!) { (image) in
             cell.imageView.image = image
