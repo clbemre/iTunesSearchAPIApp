@@ -32,11 +32,14 @@ class SearchItemCell: BaseCollectionViewCell, ConfigurableCell {
     }
 
     func configure(data: SearchItemModel) {
-        labelTitle.text = data.artistName
+        labelTitle.text = data.collectionName
 
-        ImageLoader.image(for: URL(string: data.artworkUrl100)!) { [weak self] (image) in
+        ImageLoader.image(for: URL(string: data.artworkUrl60)!) { [weak self] (image) in
             self?.imageView.image = image
         }
+
+        mContentView.backgroundColor = data.clicked ? .lightGray : .white
+
     }
 
 }

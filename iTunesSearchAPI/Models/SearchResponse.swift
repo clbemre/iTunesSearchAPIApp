@@ -10,7 +10,7 @@ import Foundation
 
 struct SearchResponse: Codable, CustomStringConvertible {
     let resultCount: Int
-    let results: [SearchItemModel]
+    var results: [SearchItemModel]
 }
 
 struct SearchItemModel: Codable {
@@ -28,6 +28,8 @@ struct SearchItemModel: Codable {
     let trackTimeMillis: Int
     let country, currency, primaryGenreName: String
     let isStreamable: Bool
+    
+    var clicked: Bool = false
 
     enum CodingKeys: String, CodingKey {
         case wrapperType, kind

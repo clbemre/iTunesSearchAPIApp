@@ -93,6 +93,12 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
         return cell
     }
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let clickedItem = self.viewModel.getItem(indexPath: indexPath)
+        self.viewModel.syncClickedItem(trackID: clickedItem.trackID)
+        self.collectionView.reloadItems(at: [indexPath])
+    }
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         if viewModel.isIphonePortrait {
@@ -100,6 +106,14 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
         } else {
             return self.collectionViewTwoColumnSize(collectionViewLayout)
         }
+    }
+
+    func deletedSearchItem(trackID: UInt64) {
+        guard let findIndexPath = self.viewModel.findIndexPath(trackID: trackID) else { return }
+        self.collectionView.performBatchUpdates({
+            self.viewModel.syncDeletedItem(trackID: trackID)
+            self.collectionView.deleteItems(at: [findIndexPath])
+        }, completion: nil)
     }
 
 }

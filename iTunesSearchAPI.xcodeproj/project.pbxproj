@@ -23,6 +23,7 @@
 		675404A624E32ABD004295BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404A524E32ABD004295BA /* UIView+Extensions.swift */; };
 		675404A824E32F6E004295BA /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404A724E32F6E004295BA /* DeviceInfo.swift */; };
 		675404AE24E33420004295BA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404AD24E33420004295BA /* ImageLoader.swift */; };
+		675404B124E3444D004295BA /* LocalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404B024E3444D004295BA /* LocalDataManager.swift */; };
 		677C502424E1D7500033B50F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C502324E1D7500033B50F /* AppDelegate.swift */; };
 		677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C502524E1D7500033B50F /* SceneDelegate.swift */; };
 		677C502D24E1D7530033B50F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677C502C24E1D7530033B50F /* Assets.xcassets */; };
@@ -72,6 +73,7 @@
 		675404A524E32ABD004295BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
 		675404A724E32F6E004295BA /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		675404AD24E33420004295BA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		675404B024E3444D004295BA /* LocalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalDataManager.swift; sourceTree = "<group>"; };
 		677C502024E1D7500033B50F /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C502324E1D7500033B50F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		677C502524E1D7500033B50F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -167,8 +169,7 @@
 		6754049624E2E88C004295BA /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				6754049724E2E89C004295BA /* Bases */,
-				6754049824E2E8A6004295BA /* SearchItemCell */,
+				675404AF24E343A3004295BA /* Cells */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -207,6 +208,15 @@
 				6754049F24E30A9D004295BA /* CustomStringConvertible+Extensions.swift */,
 			);
 			path = VariableExtensions;
+			sourceTree = "<group>";
+		};
+		675404AF24E343A3004295BA /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				6754049724E2E89C004295BA /* Bases */,
+				6754049824E2E8A6004295BA /* SearchItemCell */,
+			);
+			path = Cells;
 			sourceTree = "<group>";
 		};
 		677C501724E1D7500033B50F = {
@@ -296,6 +306,7 @@
 		677C504A24E1E5E30033B50F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				675404B024E3444D004295BA /* LocalDataManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -568,6 +579,7 @@
 				6754049324E2E808004295BA /* UICollectionView+Extensions.swift in Sources */,
 				677C505D24E1EFB40033B50F /* ViewModelFactory.swift in Sources */,
 				677C505624E1E77C0033B50F /* CLBError.swift in Sources */,
+				675404B124E3444D004295BA /* LocalDataManager.swift in Sources */,
 				677C506F24E1F45F0033B50F /* BaseViewController.swift in Sources */,
 				6754049E24E2F9F0004295BA /* FileSystem.swift in Sources */,
 				675404A224E30D0B004295BA /* WindowHelper.swift in Sources */,
