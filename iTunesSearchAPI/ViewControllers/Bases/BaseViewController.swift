@@ -12,14 +12,10 @@ class BaseViewController: UIViewController {
 
     var activityIndicator: CustomProgressView?
 
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.setupView()
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
         initActivityIndicator()
+        self.setupView()
         self.initialComponents()
         self.registerEvents()
     }
@@ -36,7 +32,7 @@ class BaseViewController: UIViewController {
 
     /// This method is used for actions/events.
     func registerEvents() {
-        preconditionFailure("registerEvents - This method must be overridden")
+       
     }
 }
 

@@ -239,7 +239,7 @@
 				677C504824E1E5C70033B50F /* ViewModels */,
 				677C504724E1E5BF0033B50F /* Models */,
 				677C505024E1E6E30033B50F /* NetworkLayer */,
-				677C504A24E1E5E30033B50F /* Manager */,
+				677C504A24E1E5E30033B50F /* Managers */,
 				677C506624E1F1CB0033B50F /* Helper */,
 				677C504624E1DBEF0033B50F /* SupportingFiles */,
 			);
@@ -293,11 +293,11 @@
 			path = ViewControllers;
 			sourceTree = "<group>";
 		};
-		677C504A24E1E5E30033B50F /* Manager */ = {
+		677C504A24E1E5E30033B50F /* Managers */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Manager;
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		677C504B24E1E5EC0033B50F /* Extensions */ = {

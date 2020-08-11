@@ -20,3 +20,8 @@ class BaseCollectionViewCell: UICollectionViewCell {
     }
 
 }
+
+protocol ConfigurableCell where Self: BaseCollectionViewCell {
+    associatedtype DataType
+    func configure(data: DataType)
+}

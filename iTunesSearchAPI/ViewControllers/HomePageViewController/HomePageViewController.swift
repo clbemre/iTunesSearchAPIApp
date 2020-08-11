@@ -58,11 +58,6 @@ class HomePageViewController: BaseViewController {
         self.collectionView.collectionViewLayout.invalidateLayout()
     }
 
-
-    override func registerEvents() {
-
-    }
-
 }
 
 // MARK: HomePageViewModelDelegate
@@ -94,28 +89,17 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.generateReusableCell(SearchItemCell.self, indexPath: indexPath)
-
-        let item = self.viewModel.getItem(indexPath: indexPath)
-        cell.labelTitle.text = item.artistName
-
-        ImageLoader.image(for: URL(string: item.artworkUrl100)!) { (image) in
-            cell.imageView.image = image
-        }
-
+        cell.configure(data: self.viewModel.getItem(indexPath: indexPath))
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
         if viewModel.isIphonePortrait {
-            return CGSize(width: collectionView.frame.size.width - 24, height: 161)
+            return self.collectionViewOneColumnSize()
         } else {
-            let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
-            let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-            let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
-            return CGSize(width: size, height: 161)
+            return self.collectionViewTwoColumnSize(collectionViewLayout)
         }
-
     }
 
 }
@@ -136,5 +120,16 @@ private extension HomePageViewController {
             maker.leading.equalTo(self.view.safeAreaLayoutGuide.snp.leading)
             maker.trailing.equalTo(self.view.safeAreaLayoutGuide.snp.trailing)
         }
+    }
+
+    private func collectionViewOneColumnSize() -> CGSize {
+        return CGSize(width: collectionView.frame.size.width - 24, height: 161)
+    }
+
+    private func collectionViewTwoColumnSize(_ collectionViewLayout: UICollectionViewLayout) -> CGSize {
+        let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
+        let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
+        let size: CGFloat = (collectionView.frame.size.width - space) / 2.0
+        return CGSize(width: size, height: 161)
     }
 }

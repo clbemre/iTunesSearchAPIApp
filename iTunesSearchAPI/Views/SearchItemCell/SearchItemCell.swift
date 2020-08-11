@@ -8,11 +8,20 @@
 
 import UIKit
 
-class SearchItemCell: BaseCollectionViewCell {
+class SearchItemCell: BaseCollectionViewCell, ConfigurableCell {
+
+    typealias DataType = SearchItemModel
 
     @IBOutlet weak var mContentView: UIView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var labelTitle: UILabel!
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.mContentView.backgroundColor = .white
+        self.labelTitle.text = ""
+        self.imageView.image = nil
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -20,6 +29,14 @@ class SearchItemCell: BaseCollectionViewCell {
         mContentView.layer.masksToBounds = true
 
         mContentView.setDefaultFlurShadow()
+    }
+
+    func configure(data: SearchItemModel) {
+        labelTitle.text = data.artistName
+
+        ImageLoader.image(for: URL(string: data.artworkUrl100)!) { [weak self] (image) in
+            self?.imageView.image = image
+        }
     }
 
 }
