@@ -25,6 +25,8 @@
 		677C506524E1F0F70033B50F /* HomePageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C506424E1F0F70033B50F /* HomePageViewModel.swift */; };
 		677C506824E1F1E30033B50F /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C506724E1F1E30033B50F /* Utils.swift */; };
 		677C506A24E1F20E0033B50F /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C506924E1F20E0033B50F /* UIDevice+Extensions.swift */; };
+		677C506C24E1F4350033B50F /* HomePageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C506B24E1F4350033B50F /* HomePageViewController.swift */; };
+		677C506F24E1F45F0033B50F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C506E24E1F45F0033B50F /* BaseViewController.swift */; };
 		BE403CE9C5790257C225D52F /* Pods_iTunesSearchAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 23151406B7F119C0B48BA7DF /* Pods_iTunesSearchAPI.framework */; };
 /* End PBXBuildFile section */
 
@@ -62,6 +64,8 @@
 		677C506424E1F0F70033B50F /* HomePageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewModel.swift; sourceTree = "<group>"; };
 		677C506724E1F1E30033B50F /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		677C506924E1F20E0033B50F /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		677C506B24E1F4350033B50F /* HomePageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePageViewController.swift; sourceTree = "<group>"; };
+		677C506E24E1F45F0033B50F /* BaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		89852B29592788D9CC690FCF /* Pods-iTunesSearchAPI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchAPI.debug.xcconfig"; path = "Target Support Files/Pods-iTunesSearchAPI/Pods-iTunesSearchAPI.debug.xcconfig"; sourceTree = "<group>"; };
 		903C47C9FC3A32E51AFEAE98 /* Pods-iTunesSearchAPITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchAPITests.debug.xcconfig"; path = "Target Support Files/Pods-iTunesSearchAPITests/Pods-iTunesSearchAPITests.debug.xcconfig"; sourceTree = "<group>"; };
 		D9E0F94E5CF11233A5163BE9 /* Pods-iTunesSearchAPITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-iTunesSearchAPITests.release.xcconfig"; path = "Target Support Files/Pods-iTunesSearchAPITests/Pods-iTunesSearchAPITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -184,6 +188,8 @@
 		677C504924E1E5CE0033B50F /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				677C506D24E1F4560033B50F /* Bases */,
+				677C506B24E1F4350033B50F /* HomePageViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -247,6 +253,14 @@
 				677C506724E1F1E30033B50F /* Utils.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		677C506D24E1F4560033B50F /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				677C506E24E1F45F0033B50F /* BaseViewController.swift */,
+			);
+			path = Bases;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -424,10 +438,12 @@
 				677C506824E1F1E30033B50F /* Utils.swift in Sources */,
 				677C502424E1D7500033B50F /* AppDelegate.swift in Sources */,
 				677C506024E1EFD20033B50F /* BaseViewModel.swift in Sources */,
+				677C506C24E1F4350033B50F /* HomePageViewController.swift in Sources */,
 				677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */,
 				677C506524E1F0F70033B50F /* HomePageViewModel.swift in Sources */,
 				677C505D24E1EFB40033B50F /* ViewModelFactory.swift in Sources */,
 				677C505624E1E77C0033B50F /* CLBError.swift in Sources */,
+				677C506F24E1F45F0033B50F /* BaseViewController.swift in Sources */,
 				677C505924E1E97C0033B50F /* HomePageManager.swift in Sources */,
 				677C506A24E1F20E0033B50F /* UIDevice+Extensions.swift in Sources */,
 			);
