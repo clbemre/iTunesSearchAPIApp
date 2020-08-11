@@ -8,6 +8,7 @@ target 'iTunesSearchAPI' do
   # Pods for iTunesSearchAPI
   pod 'Moya', '~> 14.0'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'NVActivityIndicatorView'
 
   target 'iTunesSearchAPITests' do
     inherit! :search_paths
