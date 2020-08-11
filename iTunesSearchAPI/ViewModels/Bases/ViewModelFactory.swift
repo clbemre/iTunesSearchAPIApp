@@ -22,8 +22,8 @@ protocol ViewModelFactory {
 extension ViewModelFactory {
 
     func createMoyaProvider<Target: TargetType>(targetType: Target.Type) -> MoyaProvider<Target> {
-        let provider = MoyaProvider<Target>(plugins: [NetworkLoggerPlugin(verbose: true)])
-        provider.manager.session.configuration.timeoutIntervalForRequest = 120
+        let provider = MoyaProvider<Target>(plugins: [NetworkLoggerPlugin(configuration: .init())])
+        provider.session.sessionConfiguration.timeoutIntervalForRequest = 120
         return provider
     }
 

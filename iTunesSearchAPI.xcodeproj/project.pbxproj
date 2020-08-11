@@ -11,6 +11,10 @@
 		6754048924E2DC4E004295BA /* CustomProgressView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754048824E2DC4E004295BA /* CustomProgressView.swift */; };
 		6754048C24E2DC99004295BA /* BaseUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754048B24E2DC99004295BA /* BaseUIView.swift */; };
 		6754048F24E2DD2B004295BA /* DispatchQueue+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754048E24E2DD2B004295BA /* DispatchQueue+Extensions.swift */; };
+		6754049124E2E7DB004295BA /* BaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049024E2E7DB004295BA /* BaseCollectionViewCell.swift */; };
+		6754049324E2E808004295BA /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049224E2E808004295BA /* UICollectionView+Extensions.swift */; };
+		6754049B24E2E8D9004295BA /* SearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049924E2E8D9004295BA /* SearchItemCell.swift */; };
+		6754049C24E2E8D9004295BA /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6754049A24E2E8D9004295BA /* SearchItemCell.xib */; };
 		677C502424E1D7500033B50F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C502324E1D7500033B50F /* AppDelegate.swift */; };
 		677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C502524E1D7500033B50F /* SceneDelegate.swift */; };
 		677C502D24E1D7530033B50F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677C502C24E1D7530033B50F /* Assets.xcassets */; };
@@ -49,6 +53,10 @@
 		6754048824E2DC4E004295BA /* CustomProgressView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomProgressView.swift; sourceTree = "<group>"; };
 		6754048B24E2DC99004295BA /* BaseUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseUIView.swift; sourceTree = "<group>"; };
 		6754048E24E2DD2B004295BA /* DispatchQueue+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+Extensions.swift"; sourceTree = "<group>"; };
+		6754049024E2E7DB004295BA /* BaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		6754049224E2E808004295BA /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
+		6754049924E2E8D9004295BA /* SearchItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCell.swift; sourceTree = "<group>"; };
+		6754049A24E2E8D9004295BA /* SearchItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
 		677C502024E1D7500033B50F /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C502324E1D7500033B50F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		677C502524E1D7500033B50F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +151,40 @@
 			path = Bases;
 			sourceTree = "<group>";
 		};
+		6754049424E2E878004295BA /* HomePageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				677C506B24E1F4350033B50F /* HomePageViewController.swift */,
+			);
+			path = HomePageViewController;
+			sourceTree = "<group>";
+		};
+		6754049624E2E88C004295BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6754049724E2E89C004295BA /* Bases */,
+				6754049824E2E8A6004295BA /* SearchItemCell */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6754049724E2E89C004295BA /* Bases */ = {
+			isa = PBXGroup;
+			children = (
+				6754049024E2E7DB004295BA /* BaseCollectionViewCell.swift */,
+			);
+			path = Bases;
+			sourceTree = "<group>";
+		};
+		6754049824E2E8A6004295BA /* SearchItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				6754049924E2E8D9004295BA /* SearchItemCell.swift */,
+				6754049A24E2E8D9004295BA /* SearchItemCell.xib */,
+			);
+			path = SearchItemCell;
+			sourceTree = "<group>";
+		};
 		677C501724E1D7500033B50F = {
 			isa = PBXGroup;
 			children = (
@@ -166,12 +208,13 @@
 		677C502224E1D7500033B50F /* iTunesSearchAPI */ = {
 			isa = PBXGroup;
 			children = (
+				677C504B24E1E5EC0033B50F /* Extensions */,
 				6754048624E2DC39004295BA /* Components */,
+				6754049624E2E88C004295BA /* Views */,
 				677C504924E1E5CE0033B50F /* ViewControllers */,
 				677C504824E1E5C70033B50F /* ViewModels */,
 				677C504724E1E5BF0033B50F /* Models */,
 				677C505024E1E6E30033B50F /* NetworkLayer */,
-				677C504B24E1E5EC0033B50F /* Extensions */,
 				677C504A24E1E5E30033B50F /* Manager */,
 				677C506624E1F1CB0033B50F /* Helper */,
 				677C504624E1DBEF0033B50F /* SupportingFiles */,
@@ -221,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				677C506D24E1F4560033B50F /* Bases */,
-				677C506B24E1F4350033B50F /* HomePageViewController.swift */,
+				6754049424E2E878004295BA /* HomePageViewController */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -238,6 +281,7 @@
 			children = (
 				677C506924E1F20E0033B50F /* UIDevice+Extensions.swift */,
 				6754048E24E2DD2B004295BA /* DispatchQueue+Extensions.swift */,
+				6754049224E2E808004295BA /* UICollectionView+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -381,6 +425,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				677C503024E1D7530033B50F /* LaunchScreen.storyboard in Resources */,
+				6754049C24E2E8D9004295BA /* SearchItemCell.xib in Resources */,
 				677C502D24E1D7530033B50F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -468,6 +513,7 @@
 				677C506324E1F07C0033B50F /* HomeViewModelFactory.swift in Sources */,
 				677C505224E1E6FD0033B50F /* NetworkUtil.swift in Sources */,
 				677C504F24E1E6910033B50F /* SearchResponse.swift in Sources */,
+				6754049124E2E7DB004295BA /* BaseCollectionViewCell.swift in Sources */,
 				677C506824E1F1E30033B50F /* Utils.swift in Sources */,
 				677C502424E1D7500033B50F /* AppDelegate.swift in Sources */,
 				6754048924E2DC4E004295BA /* CustomProgressView.swift in Sources */,
@@ -476,6 +522,8 @@
 				6754048F24E2DD2B004295BA /* DispatchQueue+Extensions.swift in Sources */,
 				677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */,
 				677C506524E1F0F70033B50F /* HomePageViewModel.swift in Sources */,
+				6754049B24E2E8D9004295BA /* SearchItemCell.swift in Sources */,
+				6754049324E2E808004295BA /* UICollectionView+Extensions.swift in Sources */,
 				677C505D24E1EFB40033B50F /* ViewModelFactory.swift in Sources */,
 				677C505624E1E77C0033B50F /* CLBError.swift in Sources */,
 				677C506F24E1F45F0033B50F /* BaseViewController.swift in Sources */,
