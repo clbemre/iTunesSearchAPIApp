@@ -30,7 +30,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="ejL-lr-0O5" firstAttribute="width" secondItem="3yC-HO-Hte" secondAttribute="height" multiplier="0.8" id="0jb-SJ-2XS"/>
                             <constraint firstItem="cUA-EH-eGB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3yC-HO-Hte" secondAttribute="top" constant="8" id="7on-XH-DkK"/>
@@ -45,6 +45,7 @@
                     </view>
                 </subviews>
             </view>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="3yC-HO-Hte" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="n07-Yr-nDH"/>
                 <constraint firstItem="3yC-HO-Hte" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="pA0-oQ-v4D"/>

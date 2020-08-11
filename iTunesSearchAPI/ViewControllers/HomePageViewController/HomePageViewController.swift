@@ -11,6 +11,17 @@ import SnapKit
 
 class HomePageViewController: BaseViewController {
 
+    // MARK: UI Elements
+    let collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
+        layout.scrollDirection = .vertical
+        collectionView.backgroundColor = .clear
+        collectionView.showsVerticalScrollIndicator = false
+        collectionView.showsHorizontalScrollIndicator = false
+        return collectionView
+    }()
+
     let viewModel: HomePageViewModel
 
     init(viewModel: HomePageViewModel) {
@@ -34,46 +45,69 @@ class HomePageViewController: BaseViewController {
         collectionView.registerCell(SearchItemCell.self)
         collectionView.delegate = self
         collectionView.dataSource = self
+
+        viewModel.delegate = self
+        viewModel.search(term: "jack+johnson", limit: 100)
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        viewModel.isIphonePortrait = DeviceInfo.Orientation.isPortrait && DeviceInfo.UserInterfaceIdiom.isPhone
+
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    }
+
 
     override func registerEvents() {
 
     }
 
-    // MARK: UI Elements
-    let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), collectionViewLayout: layout)
-        layout.scrollDirection = .vertical
-        collectionView.backgroundColor = .clear
-        collectionView.showsVerticalScrollIndicator = false
-        collectionView.showsHorizontalScrollIndicator = false
-        return collectionView
-    }()
+}
+
+// MARK: HomePageViewModelDelegate
+extension HomePageViewController: HomePageViewModelDelegate {
+
+    func successSearchResponse() {
+        self.collectionView.reloadData()
+    }
+
+    func showLoading() {
+        self.showLoadingIndicator()
+    }
+
+    func hideLoading() {
+        self.hideLoadingIndicator()
+    }
+
+    func showErrorMessage(message: String) {
+        showAlertMessage(title: "Error", message: message)
+    }
 
 }
 
 extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 9
+        return self.viewModel.numberOfItemsInSection()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.generateReusableCell(SearchItemCell.self, indexPath: indexPath)
 
-        cell.mContentView.backgroundColor = .green
+        let item = self.viewModel.getItem(indexPath: indexPath)
+        cell.labelTitle.text = item.artistNames
 
-        cell.labelTitle.text = "Emre Celebi"
+        ImageLoader.image(for: URL(string: item.artworkUrl100)!) { (image) in
+            cell.imageView.image = image
+        }
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
 
-        let currentDevice = UIDevice.current
-        if currentDevice.orientation.isPortrait
-            && currentDevice.userInterfaceIdiom == .phone {
+        if viewModel.isIphonePortrait {
             return CGSize(width: collectionView.frame.size.width - 24, height: 161)
         } else {
             let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
@@ -88,7 +122,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
 
 
 // MARK: UI Setup
-extension HomePageViewController {
+private extension HomePageViewController {
 
     func addAllViews() {
         view.addSubview(collectionView)

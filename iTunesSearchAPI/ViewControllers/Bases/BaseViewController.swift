@@ -14,12 +14,12 @@ class BaseViewController: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        initActivityIndicator()
         self.setupView()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        initActivityIndicator()
         self.initialComponents()
         self.registerEvents()
     }
@@ -49,17 +49,16 @@ extension BaseViewController {
 
     func showLoadingIndicator() {
         DispatchQueue.delay(250) { [weak self] in
-            guard let sSelf = self else { return }
-            if let activityIndicator = sSelf.activityIndicator {
-                activityIndicator.showLoadingIndicator(mView: sSelf.view)
+            guard let window = WindowHelper.getWindow() else { return }
+            if let activityIndicator = self?.activityIndicator {
+                activityIndicator.showLoadingIndicator(mView: window)
             }
         }
     }
 
     func hideLoadingIndicator() {
         DispatchQueue.delay(250) { [weak self] in
-            guard let sSelf = self else { return }
-            if let activityIndicator = sSelf.activityIndicator {
+            if let activityIndicator = self?.activityIndicator {
                 activityIndicator.hideLoadingIndicator()
             }
         }

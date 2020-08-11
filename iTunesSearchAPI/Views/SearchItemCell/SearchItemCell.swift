@@ -18,6 +18,8 @@ class SearchItemCell: BaseCollectionViewCell {
         super.awakeFromNib()
         mContentView.layer.cornerRadius = 5
         mContentView.layer.masksToBounds = true
+
+        mContentView.setDefaultFlurShadow()
     }
 
 }

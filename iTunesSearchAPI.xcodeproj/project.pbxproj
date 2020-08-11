@@ -16,6 +16,13 @@
 		6754049324E2E808004295BA /* UICollectionView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049224E2E808004295BA /* UICollectionView+Extensions.swift */; };
 		6754049B24E2E8D9004295BA /* SearchItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049924E2E8D9004295BA /* SearchItemCell.swift */; };
 		6754049C24E2E8D9004295BA /* SearchItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6754049A24E2E8D9004295BA /* SearchItemCell.xib */; };
+		6754049E24E2F9F0004295BA /* FileSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049D24E2F9F0004295BA /* FileSystem.swift */; };
+		675404A024E30A9D004295BA /* CustomStringConvertible+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6754049F24E30A9D004295BA /* CustomStringConvertible+Extensions.swift */; };
+		675404A224E30D0B004295BA /* WindowHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404A124E30D0B004295BA /* WindowHelper.swift */; };
+		675404A424E327E0004295BA /* DownloadableServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404A324E327E0004295BA /* DownloadableServiceProtocol.swift */; };
+		675404A624E32ABD004295BA /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404A524E32ABD004295BA /* UIView+Extensions.swift */; };
+		675404A824E32F6E004295BA /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404A724E32F6E004295BA /* DeviceInfo.swift */; };
+		675404AE24E33420004295BA /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 675404AD24E33420004295BA /* ImageLoader.swift */; };
 		677C502424E1D7500033B50F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C502324E1D7500033B50F /* AppDelegate.swift */; };
 		677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 677C502524E1D7500033B50F /* SceneDelegate.swift */; };
 		677C502D24E1D7530033B50F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 677C502C24E1D7530033B50F /* Assets.xcassets */; };
@@ -55,6 +62,13 @@
 		6754049224E2E808004295BA /* UICollectionView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extensions.swift"; sourceTree = "<group>"; };
 		6754049924E2E8D9004295BA /* SearchItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchItemCell.swift; sourceTree = "<group>"; };
 		6754049A24E2E8D9004295BA /* SearchItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchItemCell.xib; sourceTree = "<group>"; };
+		6754049D24E2F9F0004295BA /* FileSystem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileSystem.swift; sourceTree = "<group>"; };
+		6754049F24E30A9D004295BA /* CustomStringConvertible+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CustomStringConvertible+Extensions.swift"; sourceTree = "<group>"; };
+		675404A124E30D0B004295BA /* WindowHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowHelper.swift; sourceTree = "<group>"; };
+		675404A324E327E0004295BA /* DownloadableServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadableServiceProtocol.swift; sourceTree = "<group>"; };
+		675404A524E32ABD004295BA /* UIView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
+		675404A724E32F6E004295BA /* DeviceInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
+		675404AD24E33420004295BA /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		677C502024E1D7500033B50F /* iTunesSearchAPI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iTunesSearchAPI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		677C502324E1D7500033B50F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		677C502524E1D7500033B50F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -176,6 +190,25 @@
 			path = SearchItemCell;
 			sourceTree = "<group>";
 		};
+		675404A924E333DD004295BA /* UIExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				675404A524E32ABD004295BA /* UIView+Extensions.swift */,
+				677C506924E1F20E0033B50F /* UIDevice+Extensions.swift */,
+				6754049224E2E808004295BA /* UICollectionView+Extensions.swift */,
+			);
+			path = UIExtensions;
+			sourceTree = "<group>";
+		};
+		675404AC24E33411004295BA /* VariableExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				6754048E24E2DD2B004295BA /* DispatchQueue+Extensions.swift */,
+				6754049F24E30A9D004295BA /* CustomStringConvertible+Extensions.swift */,
+			);
+			path = VariableExtensions;
+			sourceTree = "<group>";
+		};
 		677C501724E1D7500033B50F = {
 			isa = PBXGroup;
 			children = (
@@ -270,9 +303,8 @@
 		677C504B24E1E5EC0033B50F /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				677C506924E1F20E0033B50F /* UIDevice+Extensions.swift */,
-				6754048E24E2DD2B004295BA /* DispatchQueue+Extensions.swift */,
-				6754049224E2E808004295BA /* UICollectionView+Extensions.swift */,
+				675404A924E333DD004295BA /* UIExtensions */,
+				675404AC24E33411004295BA /* VariableExtensions */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -283,6 +315,7 @@
 				677C505724E1E95B0033B50F /* HomePage */,
 				677C505124E1E6FD0033B50F /* NetworkUtil.swift */,
 				677C505324E1E74F0033B50F /* BaseManager.swift */,
+				675404A324E327E0004295BA /* DownloadableServiceProtocol.swift */,
 			);
 			path = NetworkLayer;
 			sourceTree = "<group>";
@@ -319,6 +352,10 @@
 			isa = PBXGroup;
 			children = (
 				677C506724E1F1E30033B50F /* Utils.swift */,
+				6754049D24E2F9F0004295BA /* FileSystem.swift */,
+				675404A124E30D0B004295BA /* WindowHelper.swift */,
+				675404A724E32F6E004295BA /* DeviceInfo.swift */,
+				675404AD24E33420004295BA /* ImageLoader.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -511,13 +548,18 @@
 				677C505B24E1EA0A0033B50F /* HomePageService.swift in Sources */,
 				677C505424E1E74F0033B50F /* BaseManager.swift in Sources */,
 				677C506324E1F07C0033B50F /* HomeViewModelFactory.swift in Sources */,
+				675404AE24E33420004295BA /* ImageLoader.swift in Sources */,
+				675404A424E327E0004295BA /* DownloadableServiceProtocol.swift in Sources */,
 				677C505224E1E6FD0033B50F /* NetworkUtil.swift in Sources */,
 				677C504F24E1E6910033B50F /* SearchResponse.swift in Sources */,
+				675404A024E30A9D004295BA /* CustomStringConvertible+Extensions.swift in Sources */,
+				675404A824E32F6E004295BA /* DeviceInfo.swift in Sources */,
 				6754049124E2E7DB004295BA /* BaseCollectionViewCell.swift in Sources */,
 				677C506824E1F1E30033B50F /* Utils.swift in Sources */,
 				677C502424E1D7500033B50F /* AppDelegate.swift in Sources */,
 				6754048924E2DC4E004295BA /* CustomProgressView.swift in Sources */,
 				677C506024E1EFD20033B50F /* BaseViewModel.swift in Sources */,
+				675404A624E32ABD004295BA /* UIView+Extensions.swift in Sources */,
 				677C506C24E1F4350033B50F /* HomePageViewController.swift in Sources */,
 				6754048F24E2DD2B004295BA /* DispatchQueue+Extensions.swift in Sources */,
 				677C502624E1D7500033B50F /* SceneDelegate.swift in Sources */,
@@ -527,6 +569,8 @@
 				677C505D24E1EFB40033B50F /* ViewModelFactory.swift in Sources */,
 				677C505624E1E77C0033B50F /* CLBError.swift in Sources */,
 				677C506F24E1F45F0033B50F /* BaseViewController.swift in Sources */,
+				6754049E24E2F9F0004295BA /* FileSystem.swift in Sources */,
+				675404A224E30D0B004295BA /* WindowHelper.swift in Sources */,
 				677C505924E1E97C0033B50F /* HomePageManager.swift in Sources */,
 				677C506A24E1F20E0033B50F /* UIDevice+Extensions.swift in Sources */,
 				6754048C24E2DC99004295BA /* BaseUIView.swift in Sources */,
@@ -683,6 +727,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9PXZ4QCUL5;
 				INFOPLIST_FILE = iTunesSearchAPI/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -702,6 +747,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 9PXZ4QCUL5;
 				INFOPLIST_FILE = iTunesSearchAPI/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				LD_RUNPATH_SEARCH_PATHS = (

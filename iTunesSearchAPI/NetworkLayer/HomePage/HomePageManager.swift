@@ -20,6 +20,6 @@ class HomePageManager: BaseManager<HomePageService>, HomePageServiceProtocol {
     }
 
     func fetchSearchList(term: String, limit: Int, completion: @escaping (SearchResponse?, CLBError?) -> Void) {
-        mRequest(.search(term: term, limit: limit), callback: completion)
+        downloadFileRequest(.search(term: term, limit: limit), callback: completion)
     }
 }

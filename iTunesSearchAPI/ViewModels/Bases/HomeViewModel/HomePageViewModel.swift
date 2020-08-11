@@ -15,13 +15,17 @@ protocol HomePageViewModelProtocol: class {
 
 protocol HomePageViewModelDelegate: BaseViewModelDelegate {
 
-    func successSearchResponse(response: SearchResponse)
+    func successSearchResponse()
 }
 
 class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
 
     let serviceManager: HomePageManager
     var delegate: HomePageViewModelDelegate? = nil
+    
+    var isIphonePortrait: Bool = true
+
+    var searchResponse: SearchResponse = SearchResponse(resultCount: 0, results: [])
 
     required init(serviceManager: HomePageManager) {
         self.serviceManager = serviceManager
@@ -37,7 +41,9 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
                 if let error = error {
                     self.delegate?.showErrorMessage(message: error.errorMessage)
                 } else if let resp = response {
-                    self.delegate?.successSearchResponse(response: resp)
+                    print(resp)
+                    self.searchResponse = resp
+                    self.delegate?.successSearchResponse()
                 } else {
                     self.delegate?.showErrorMessage(message: "Unidentified error")
                 }
@@ -45,5 +51,13 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
         } else {
             self.delegate?.showErrorMessage(message: "Please check network connection!")
         }
+    }
+
+    func numberOfItemsInSection() -> Int {
+        return searchResponse.resultCount
+    }
+    
+    func getItem(indexPath: IndexPath) -> SearchItemModel {
+        return searchResponse.results[indexPath.row]
     }
 }

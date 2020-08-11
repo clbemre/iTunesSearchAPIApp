@@ -8,13 +8,21 @@
 
 import Moya
 
-enum HomePageService {
+enum HomePageService: DownloadableServiceProtocol {
 
     case search(term: String, limit: Int)
+
+    var localLocation: URL {
+        switch self {
+        case .search(_, _):
+            return FileSystem.readFileURL(fileKey: "term_searchList", pathExtension: "json")
+        }
+    }
+
 }
 
 extension HomePageService: TargetType {
-    
+
     var baseURL: URL {
         guard let url = URL(string: NetworkUtil.environmentBaseURL) else { fatalError("Base Url is required") }
         return url
@@ -35,22 +43,24 @@ extension HomePageService: TargetType {
     }
 
     var sampleData: Data {
-        return Data()
+        return "{}".data(using: String.Encoding.utf8)!
     }
 
     var task: Task {
         switch self {
-        case .search(let term, let limit):
-            let params: [String: Any] = [
-                "term": term,
-                "limit": limit
-            ]
-            return .requestParameters(parameters: params, encoding: URLEncoding.queryString)
-
+        case .search(_, _):
+            return .downloadParameters(parameters: self.parameters, encoding: URLEncoding.queryString, destination: downloadDestination)
         }
     }
-    
+
+    var parameters: [String: Any] {
+        switch self {
+        case .search(let term, let limit):
+            return ["term": term, "limit": limit]
+        }
+    }
+
     var headers: [String: String]? {
-        return ["Content-Type": "application/json"]
+        return [:]
     }
 }
