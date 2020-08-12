@@ -59,25 +59,4 @@ extension BaseViewController {
             }
         }
     }
-}
-
-// MARK: Alert
-extension BaseViewController {
-
-    func showAlertMessage(title: String,
-                          message: String,
-                          positiveButtonText: String = "OK",
-                          positiveHandler: ((UIAlertAction) -> Void)? = nil,
-                          negativeButtonText: String? = nil,
-                          negativeHandler: ((UIAlertAction) -> Void)? = nil) {
-
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: positiveButtonText, style: .default, handler: positiveHandler))
-
-        if let negativeButtonText = negativeButtonText {
-            alert.addAction(UIAlertAction(title: negativeButtonText, style: .cancel, handler: negativeHandler))
-        }
-
-        self.present(alert, animated: true, completion: nil)
-    }
-}
+} 

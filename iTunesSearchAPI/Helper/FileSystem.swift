@@ -24,7 +24,7 @@ class FileSystem {
         return directory
     }()
 
-    static func readFileURL(fileKey: String, pathExtension: String) -> URL {
+    static func readFileInDownloadDirectory(fileKey: String, pathExtension: String) -> URL {
         return FileSystem.downloadDirectory.appendingPathComponent(fileKey)
             .appendingPathExtension(pathExtension)
     }

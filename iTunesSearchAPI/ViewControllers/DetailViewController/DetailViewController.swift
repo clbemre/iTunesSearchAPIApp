@@ -82,6 +82,14 @@ class DetailViewController: BaseViewController {
         self.deleteItem()
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.player?.isPlaying == false {
+            self.player?.play()
+            self.songIndicator.startAnimating()
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.viewModel.downloadTask?.cancel()
@@ -102,6 +110,8 @@ extension DetailViewController: DetailPageViewModelDelegate {
 
     func showErrorMessage(message: String) {
         showAlertMessage(title: "Error", message: message)
+        self.songIndicator.alpha = 0.0
+        self.songIndicator.stopAnimating()
     }
 
     func downloadedSong(songURL: URL) {

@@ -15,7 +15,7 @@ enum HomePageService: DownloadableServiceProtocol {
     var localLocation: URL {
         switch self {
         case .search(_, _):
-            return FileSystem.readFileURL(fileKey: "term_searchList", pathExtension: "json")
+            return FileSystem.readFileInDownloadDirectory(fileKey: "term_searchList", pathExtension: "json")
         }
     }
 
@@ -49,7 +49,9 @@ extension HomePageService: TargetType {
     var task: Task {
         switch self {
         case .search(_, _):
-            return .downloadParameters(parameters: self.parameters, encoding: URLEncoding.queryString, destination: downloadDestination)
+            return .downloadParameters(parameters: self.parameters,
+                                       encoding: URLEncoding.queryString,
+                                       destination: downloadDestination)
         }
     }
 

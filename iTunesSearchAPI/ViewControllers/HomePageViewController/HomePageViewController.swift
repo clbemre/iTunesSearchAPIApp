@@ -47,6 +47,9 @@ class HomePageViewController: BaseViewController {
         collectionView.dataSource = self
 
         viewModel.delegate = self
+        // MARK: Important
+        // Since different responses are returned according to the parameter sent,
+        // this api is coded only for 'jack+johnson'.
         viewModel.search(term: "jack+johnson", limit: 100)
     }
 
@@ -95,7 +98,7 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let clickedItem = self.viewModel.getItem(indexPath: indexPath)
-        if clickedItem.clicked == false {
+        if !(clickedItem.clicked) {
             self.viewModel.syncClickedItem(indexPath: indexPath)
         }
 
