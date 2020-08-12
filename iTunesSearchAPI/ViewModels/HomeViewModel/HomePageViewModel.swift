@@ -103,9 +103,7 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
         let findIndex = self.searchItemList.firstIndex { (item) -> Bool in
             return item.trackID == trackID
         }
-
         guard let index = findIndex else { return nil }
-
         return IndexPath(item: index, section: 0)
     }
 }

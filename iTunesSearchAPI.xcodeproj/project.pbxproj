@@ -370,6 +370,8 @@
 			isa = PBXGroup;
 			children = (
 				677C505E24E1EFC50033B50F /* Bases */,
+				677C506124E1F0420033B50F /* HomeViewModel */,
+				670BE1AB24E4602800A3BBB6 /* DetailPageViewModel */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -426,8 +428,6 @@
 			children = (
 				677C505F24E1EFD20033B50F /* BaseViewModel.swift */,
 				677C505C24E1EFB40033B50F /* ViewModelFactory.swift */,
-				677C506124E1F0420033B50F /* HomeViewModel */,
-				670BE1AB24E4602800A3BBB6 /* DetailPageViewModel */,
 			);
 			path = Bases;
 			sourceTree = "<group>";

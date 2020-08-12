@@ -38,14 +38,15 @@ class DetailViewController: BaseViewController {
     var songIndicator: NVActivityIndicatorView
         = NVActivityIndicatorView(frame: .zero, type: .lineScalePulseOut, color: UIColor.white, padding: nil)
 
-    var delegate: DetailViewControllerDelegate? = nil
+    let delegate: DetailViewControllerDelegate
 
     var player: AVAudioPlayer? = nil
 
     let viewModel: DetailPageViewModel
 
-    init(viewModel: DetailPageViewModel) {
+    init(viewModel: DetailPageViewModel, delegate: DetailViewControllerDelegate) {
         self.viewModel = viewModel
+        self.delegate = delegate
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -106,19 +107,13 @@ extension DetailViewController: DetailPageViewModelDelegate {
     func downloadedSong(songURL: URL) {
         DispatchQueue.main.async {
             self.playSong(url: songURL)
+            self.songIndicator.startAnimating()
         }
     }
 }
 
 // MARK: Funcs
 private extension DetailViewController {
-
-    private func deleteItem() {
-        showAlertMessage(title: "Delete", message: "Are you sure you want to delete this song?", positiveButtonText: "Yes", positiveHandler: { _ in
-            self.delegate?.DetailViewControllerDeleteItem(at: self.viewModel.model)
-            self.navigationController?.popViewController(animated: true)
-        }, negativeButtonText: "No", negativeHandler: nil)
-    }
 
     func playSong(url: URL) {
 
@@ -128,13 +123,16 @@ private extension DetailViewController {
             player?.numberOfLoops = -1
             player?.volume = 1.0
             player?.play()
-            songIndicator.startAnimating()
-        } catch let error as NSError {
-            print(error.localizedDescription)
         } catch {
-            print("AVAudioPlayer init failed")
+            showErrorMessage(message: "the song could not be played.")
         }
+    }
 
+    private func deleteItem() {
+        showAlertMessage(title: "Delete", message: "Are you sure you want to delete this song?", positiveButtonText: "Yes", positiveHandler: { _ in
+            self.delegate.DetailViewControllerDeleteItem(at: self.viewModel.model)
+            self.navigationController?.popViewController(animated: true)
+        }, negativeButtonText: "No", negativeHandler: nil)
     }
 }
 
@@ -142,15 +140,10 @@ private extension DetailViewController {
 private extension DetailViewController {
 
     func addAllViews() {
-        addDeleteBarButtonItem()
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(self.ActionDeleteButton(_:)))
         view.addSubview(imgBanner)
         view.addSubview(titleLabel)
         view.addSubview(songIndicator)
-    }
-
-    private func addDeleteBarButtonItem() {
-        let barButton = UIBarButtonItem(title: "Delete", style: .plain, target: self, action: #selector(self.ActionDeleteButton(_:)))
-        self.navigationItem.rightBarButtonItem = barButton
     }
 
     func setupBannerImageViewConstraints() {

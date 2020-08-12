@@ -29,16 +29,20 @@ class DetailPageViewModel: IBaseViewModel, DetailPageViewModelProtocol {
     }
 
     func downloadSong(serverURL: URL) {
-        self.delegate?.showLoading()
-        downloadTask = URLSession.shared.downloadTask(with: serverURL, completionHandler: { [weak self](songUrl, response, error) -> Void in
-            self?.delegate?.hideLoading()
-            if let songUrl = songUrl {
-                self?.delegate?.downloadedSong(songURL: songUrl)
-            } else {
-                self?.delegate?.showErrorMessage(message: "The song could not be accessed.")
-            }
-        })
+        if Utils.isConnectedToNetwork() {
+            self.delegate?.showLoading()
+            downloadTask = URLSession.shared.downloadTask(with: serverURL, completionHandler: { [weak self](songUrl, response, error) -> Void in
+                self?.delegate?.hideLoading()
+                if let songUrl = songUrl {
+                    self?.delegate?.downloadedSong(songURL: songUrl)
+                } else {
+                    self?.delegate?.showErrorMessage(message: "The song could not be accessed.")
+                }
+            })
 
-        downloadTask?.resume()
+            downloadTask?.resume()
+        } else {
+            self.delegate?.showErrorMessage(message: "Please check network connection!")
+        }
     }
 }

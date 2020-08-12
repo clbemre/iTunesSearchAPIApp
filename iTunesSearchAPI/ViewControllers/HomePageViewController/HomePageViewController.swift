@@ -101,10 +101,9 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
 
         self.collectionView.reloadItems(at: [indexPath])
 
-        let detailVC = DetailViewController(viewModel: DetailPageViewModel(model: clickedItem))
-        detailVC.delegate = self
-
-        self.navigationController?.pushViewController(detailVC, animated: true)
+        self.navigationController?.pushViewController(
+            DetailViewController(viewModel: DetailPageViewModel(model: clickedItem), delegate: self),
+            animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
