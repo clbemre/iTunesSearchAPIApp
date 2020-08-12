@@ -40,7 +40,7 @@ class HomePageViewController: BaseViewController {
     }
 
     override func initialComponents() {
-        self.title = "Search List"
+        self.title = "Jack Jhonson"
 
         collectionView.registerCell(SearchItemCell.self)
         collectionView.delegate = self
