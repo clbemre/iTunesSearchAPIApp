@@ -25,7 +25,7 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
 
     var isIphonePortrait: Bool = true
 
-    private var searchResponse: SearchResponse = SearchResponse(resultCount: 0, results: [])
+    private var searchItemList: [SearchItemModel] = []
 
     required init(serviceManager: HomePageManager) {
         self.serviceManager = serviceManager
@@ -40,7 +40,7 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
                     self.delegate?.showErrorMessage(message: error.errorMessage)
                 } else if let resp = response {
                     print(resp)
-                    self.searchResponse = resp
+                    self.searchItemList = resp.results
                     self.syncClickedItems()
                     self.syncDeletedItems()
                     self.delegate?.successSearchResponse()
@@ -56,24 +56,31 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
     // Clicked Items
     private func syncClickedItems() {
         if let clickedItems = LocalDataManager.shared.getClickedItemList(), clickedItems.count > 0 {
-            let newList = searchResponse.results.map { (model) -> SearchItemModel in
+            self.searchItemList = searchItemList.map { (model) -> SearchItemModel in
                 var modified = model
                 modified.clicked = clickedItems.contains(model.trackID)
                 return modified
             }
-            self.searchResponse.results = newList
         }
     }
 
-    func syncClickedItem(trackID: UInt64) {
-        LocalDataManager.shared.saveClickedItem(id: trackID)
-        self.syncClickedItems()
+    func syncClickedItem(indexPath: IndexPath) {
+        let clickedItem = getItem(indexPath: indexPath)
+        LocalDataManager.shared.saveClickedItem(id: clickedItem.trackID)
+        self.searchItemList[indexPath.row].clicked = true
+    }
+
+
+    /// If the song is deleted, it will also be removed from locally clicked items.
+    /// - Parameter indexPath: didSelect IndexPath
+    func removeClickedItem(trackID: UInt64) {
+        LocalDataManager.shared.removeClickedItem(id: trackID)
     }
 
     // Deleted Items
     private func syncDeletedItems() {
         if let deletedItems = LocalDataManager.shared.getDeletedItemList(), deletedItems.count > 0 {
-            self.searchResponse.results = searchResponse.results.filter { (model) -> Bool in
+            self.searchItemList = self.searchItemList.filter { (model) -> Bool in
                 return !deletedItems.contains(model.trackID)
             }
         }
@@ -85,15 +92,15 @@ class HomePageViewModel: IBaseViewModel, HomePageViewModelProtocol {
     }
 
     func numberOfItemsInSection() -> Int {
-        return searchResponse.results.count
+        return searchItemList.count
     }
 
     func getItem(indexPath: IndexPath) -> SearchItemModel {
-        return self.searchResponse.results[indexPath.row]
+        return self.searchItemList[indexPath.row]
     }
 
     func findIndexPath(trackID: UInt64) -> IndexPath? {
-        let findIndex = self.searchResponse.results.firstIndex { (item) -> Bool in
+        let findIndex = self.searchItemList.firstIndex { (item) -> Bool in
             return item.trackID == trackID
         }
 

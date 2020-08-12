@@ -17,7 +17,7 @@ class SearchItemCell: BaseCollectionViewCell, ConfigurableCell {
     @IBOutlet weak var labelTitle: UILabel!
 
     override func prepareForReuse() {
-        super.prepareForReuse()
+
         self.mContentView.backgroundColor = .white
         self.labelTitle.text = ""
         self.imageView.image = nil
@@ -27,18 +27,19 @@ class SearchItemCell: BaseCollectionViewCell, ConfigurableCell {
         super.awakeFromNib()
         mContentView.layer.cornerRadius = 5
         mContentView.layer.masksToBounds = true
-
         mContentView.setDefaultFlurShadow()
+        
+        labelTitle.font = FontBook.Roboto.Medium.of(size: 14)
     }
 
     func configure(data: SearchItemModel) {
+        mContentView.backgroundColor = data.clicked ? .lightGray : .white
+
         labelTitle.text = data.collectionName
 
         ImageLoader.image(for: URL(string: data.artworkUrl60)!) { [weak self] (image) in
             self?.imageView.image = image
         }
-
-        mContentView.backgroundColor = data.clicked ? .lightGray : .white
 
     }
 

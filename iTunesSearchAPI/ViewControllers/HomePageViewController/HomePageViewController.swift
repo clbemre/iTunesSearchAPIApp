@@ -95,8 +95,16 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let clickedItem = self.viewModel.getItem(indexPath: indexPath)
-        self.viewModel.syncClickedItem(trackID: clickedItem.trackID)
+        if clickedItem.clicked == false {
+            self.viewModel.syncClickedItem(indexPath: indexPath)
+        }
+
         self.collectionView.reloadItems(at: [indexPath])
+
+        let detailVC = DetailViewController(viewModel: DetailPageViewModel(model: clickedItem))
+        detailVC.delegate = self
+
+        self.navigationController?.pushViewController(detailVC, animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,6 +124,17 @@ extension HomePageViewController: UICollectionViewDelegate, UICollectionViewDele
         }, completion: nil)
     }
 
+}
+
+// MARK: DetailViewControllerDelegate
+extension HomePageViewController: DetailViewControllerDelegate {
+
+    func DetailViewControllerDeleteItem(at deleteItem: SearchItemModel) {
+        DispatchQueue.delay(250) {
+            self.viewModel.removeClickedItem(trackID: deleteItem.trackID)
+            self.deletedSearchItem(trackID: deleteItem.trackID)
+        }
+    }
 }
 
 
