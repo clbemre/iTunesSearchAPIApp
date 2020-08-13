@@ -1,5 +1,5 @@
 //
-//  DownloadableServiceProtocol.swift
+//  DownloadableTargetType.swift
 //  iTunesSearchAPI
 //
 //  Created by Yunus Emre Celebi on 11.08.2020.
@@ -8,11 +8,11 @@
 
 import Moya
 
-protocol DownloadableServiceProtocol {
+protocol DownloadableTargetType: TargetType {
     var localLocation: URL { get }
 }
 
-extension DownloadableServiceProtocol {
+extension DownloadableTargetType {
     var downloadDestination: DownloadDestination {
         return { _, _ in return (self.localLocation, [.removePreviousFile, .createIntermediateDirectories]) }
     }

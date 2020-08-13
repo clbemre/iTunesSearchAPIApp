@@ -34,24 +34,33 @@ class BaseManager<Target: TargetType>: IBaseManager {
         }
     }
 
-    func downloadFileRequest<T: Codable>(_ target: Target , callback: @escaping (T?, CLBError?) -> Void)  {
-        provider.request(target) { (result) in
-            switch result {
-            case .success(_):
-                do {
-                    let jsonData = try Data(contentsOf: (target as! DownloadableServiceProtocol).localLocation, options: .alwaysMapped)
-                    let response = try JSONDecoder().decode(T.self, from: jsonData)
-                    callback(response, nil)
-                } catch {
-                    callback(nil, self.createCLBError(error: "Unidentified error!", statusCode: -98))
+    
+    /// For TargetType to use this method DownloadableTargetType must be implemented.
+    /// - Parameters:
+    ///   - target: TargetType implemented DownloadableTargetType
+    ///   - callback: generic response completion
+    func downloadFileRequest<T: Codable>(_ target: Target, callback: @escaping (T?, CLBError?) -> Void) {
+        if target is DownloadableTargetType {
+            provider.request(target) { (result) in
+                switch result {
+                case .success(_):
+                    do {
+                        let jsonData = try Data(contentsOf: (target as! DownloadableTargetType).localLocation, options: .alwaysMapped)
+                        let response = try JSONDecoder().decode(T.self, from: jsonData)
+                        callback(response, nil)
+                    } catch {
+                        callback(nil, self.createCLBError(error: "Unidentified error!", statusCode: -98))
+                    }
+                case .failure(let error):
+                    callback(nil, self.createCLBError(error: error.localizedDescription, statusCode: -99))
                 }
-            case .failure(let error):
-                callback(nil, self.createCLBError(error: error.localizedDescription, statusCode: -99))
             }
+        } else {
+            fatalError("for TargetType: must be implemented DownloadableTargetType")
         }
     }
 
     private func createCLBError(error: String, statusCode: Int) -> CLBError {
         return CLBError(errorMessage: error, statusCode: statusCode)
     }
-} 
+}

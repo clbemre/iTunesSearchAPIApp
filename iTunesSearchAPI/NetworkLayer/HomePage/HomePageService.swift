@@ -6,11 +6,15 @@
 //  Copyright © 2020 clb. All rights reserved.
 //
 
-import Moya
+import Moya 
 
-enum HomePageService: DownloadableServiceProtocol {
+enum HomePageService {
 
     case search(term: String, limit: Int)
+
+}
+
+extension HomePageService: DownloadableTargetType {
 
     var localLocation: URL {
         switch self {
@@ -18,10 +22,6 @@ enum HomePageService: DownloadableServiceProtocol {
             return FileSystem.readFileInDownloadDirectory(fileKey: "term_searchList", pathExtension: "json")
         }
     }
-
-}
-
-extension HomePageService: TargetType {
 
     var baseURL: URL {
         guard let url = URL(string: NetworkUtil.environmentBaseURL) else { fatalError("Base Url is required") }
