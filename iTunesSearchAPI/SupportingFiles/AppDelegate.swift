@@ -18,10 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 13.0, *) { } else {
             let window = UIWindow(frame: UIScreen.main.bounds)
             self.window = window
-            window.rootViewController =
-                UINavigationController(
-                    rootViewController: HomePageViewController(viewModel: HomeViewModelFactory().makeViewModel())
-            )
+            window.rootViewController = NavigateHelper.getRootViewController()
         }
 
         return true
